@@ -1,0 +1,51 @@
+#banner {
+    padding: 2%;
+    text-align: center;
+    margin: 0%;
+    background-color: steelblue;
+    color: white;
+}
+body {
+    margin: 0px;
+}
+
+.Moon {
+    position: absolute;
+    transition: linear 4000ms;
+}
+
+.MoonSquare {
+    position: absolute;
+    transition: linear 4000ms;
+}
+
+#Earth {
+    position: absolute;
+    left: 275px;
+    top: 515px;
+}
+
+#EarthSquare {
+    position: absolute;
+    left: 865px;
+    top: 520px;
+}
+
+p {
+    position: relative;
+    z-index: 1;
+}
+
+.rotationButtons {
+    position: relative;
+    margin-top: 45%;
+
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
