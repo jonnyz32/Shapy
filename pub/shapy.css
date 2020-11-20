@@ -1,0 +1,96 @@
+.circle {
+    position: absolute;
+    display: inline;
+    width: 20px;
+    height: 20px;
+    left: 100px;
+    top: 100px;
+    border-radius: 50%;
+    background-color: magenta;
+    transition: linear 1400ms;
+}
+
+.center {
+    width: 40px;
+    height: 40px;
+    background-color: black;
+    position: absolute;
+    top: 300px;
+    left: 500px;
+
+}
+
+#knightSprite {
+    width: 450px;
+    height: 200px;
+}
+
+.knightSpriteC {
+    width: 450px;
+    height: 200px;
+    float: left;
+}
+
+#banner {
+    padding: 2%;
+    text-align: center;
+    margin: 0%;
+    background-color: steelblue;
+    color: white;
+}
+body {
+    margin: 0px;
+}
+
+.Moon {
+    position: absolute;
+    transition: linear 4000ms;
+}
+
+.MoonSquare {
+    position: absolute;
+}
+
+#Earth {
+    position: absolute;
+    left: 275px;
+    top: 515px;
+}
+
+#EarthSquare {
+    position: absolute;
+    left: 865px;
+    top: 520px;
+}
+
+p {
+    position: relative;
+    z-index: 1;
+}
+
+.rotationButtons {
+    position: relative;
+    margin-top: 45%;
+
+}
+
+
+
+
+
+/* #rotationButtonsLeft button{
+    float: left;
+} */
+
+/* #rotationButtonsRight {
+    float: left;
+} */
+
+/* #rotationButtonsLeft {
+    margin-left: 10%;
+    float: left;
+} */
+
+/* #rotationButtonsRight button{
+    float: left;
+} */
