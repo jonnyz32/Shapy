@@ -1,0 +1,136 @@
+#banner {
+    padding: 2%;
+    text-align: center;
+    margin: 0%;
+    background-color: steelblue;
+    color: white;
+}
+body {
+    margin: 0px;
+    height: 100vh;
+}
+
+.Moon {
+    position: absolute;
+    transition: linear 4000ms;
+}
+
+.MoonSquare {
+    position: absolute;
+    transition: linear 4000ms;
+}
+
+#Earth {
+    position: absolute;
+    left: 275px;
+    top: 515px;
+}
+
+#EarthSquare {
+    position: absolute;
+    left: 865px;
+    top: 520px;
+}
+
+p {
+    position: relative;
+    z-index: 1;
+}
+
+.rotationButtons {
+    position: relative;
+    margin-top: 45%;
+
+}
+
+.rotationButtonsLeft {
+    position: absolute;
+    left: 275px;
+    top: 70%;
+    margin-bottom: 10%;
+
+}
+
+.rotationButtonsRight {
+    position: absolute;
+    top: 70%;
+    left: 865px;
+    margin-bottom: 10%;
+}
+
+.green {
+    background-color: green;
+}
+
+.red {
+    background-color: red;
+}
+
+.animations {
+    float:left;
+    margin-top: 4%;
+
+}
+
+.knightSpriteC {
+    width: 450px;
+    height: 200px;
+}
+
+#knightSprite {
+    width: 450px;
+    height: 200px;
+}
+
+.withId button {
+
+    float: left;
+}
+
+.withClass button {
+
+    float: left;
+}
+
+.moveable {
+    border: 5px solid black;
+    position: static;
+    float: left;
+    height: 30%;
+    width: 100%;
+    margin-top: 3%;
+    overflow: hidden;
+}
+
+.biggest {
+    position: absolute;
+    background-color: blue;
+    height: 3%;
+    width: 8%;
+    top: 202%;
+    left: 1%;
+}
+
+.medium {
+    position: absolute;
+    background-color: greenyellow;
+    height: 3%;
+    width: 6%;
+    top: 199%;
+    left: 2%;
+
+}
+
+.small {
+    position: absolute;
+    background-color: red;
+    height: 3%;
+    width: 4%;
+    top: 196%;
+    left: 3%;
+
+}
+
+.stand {
+    margin-top: 4.5%;
+}
