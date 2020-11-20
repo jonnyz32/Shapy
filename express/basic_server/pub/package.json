@@ -1,0 +1,28 @@
+{
+  "name": "js-library-zakjonat",
+  "version": "1.0.0",
+  "description": "",
+  "main": "shapy.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "jquery": "^3.5.1",
+    "request": "^2.88.2",
+    "requirejs": "^2.3.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/csc309-fall-2020/js-library-zakjonat.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/csc309-fall-2020/js-library-zakjonat/issues"
+  },
+  "homepage": "https://github.com/csc309-fall-2020/js-library-zakjonat#readme"
+}
