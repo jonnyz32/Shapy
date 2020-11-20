@@ -9,4 +9,28 @@ const rightStartButton = document.querySelector(".rotationButtonsRight .green")
 const rightStopButton = document.querySelector(".rotationButtonsRight .red")
 
 leftStartButton.addEventListener("click", () => rotateElements("Moon", leftStopButton))
-rightStartButton.addEventListener("click", () => rotateElements2("MoonSquare", rightStopButton))
+rightStartButton.addEventListener("click", () => rotateElements("MoonSquare", rightStopButton))
+
+const startAnimationClass =  document.querySelector(".animations .withClass .green")
+const stopAnimationClass =  document.querySelector(".animations .withClass .red")
+
+startAnimationClass.addEventListener("click", () => {
+    animateSpriteWithClass('knightSpriteC', './knightAttackSprites/tile', 22, 70, stopAnimationClass)
+    }
+)
+
+const startAnimationId =  document.querySelector(".animations .withId .green")
+const stopAnimationId =  document.querySelector(".animations .withId .red")
+
+startAnimationId.addEventListener("click", () => {
+    animateSpriteWithId('knightSprite', './knightAttackSprites/tile', 22, 70, stopAnimationId)
+    }
+)
+
+const biggest = document.querySelector(".biggest")
+const medium = document.querySelector(".medium")
+const small = document.querySelector(".small")
+
+biggest.addEventListener("mousedown", () => drag(event))
+medium.addEventListener("mousedown", () => drag(event))
+small.addEventListener("mousedown", () => drag(event))

@@ -1,45 +1,39 @@
 
-//   let center = document.querySelector('.center')
-
-
-// let fs = require('fs')
-
 drag = (e) => {
-    e.preventDefault()
+    element = e.target
+    currentX = element.getBoundingClientRect().left
+    currentY = element.getBoundingClientRect().top
+    console.log("currentX,Y", currentX, currentY)
+    clickX = e.clientX
+    clickY = e.clientY
+    console.log("clickX,Y", clickX, clickY)
+    console.log(element)
 
 mousemove = (e) => {
-    e.preventDefault()
 
-    let newX = e.clientX
-    let newY = e.clientY
+    let newX = e.clientX + window.scrollX - (clickX - currentX)
+    let newY = e.clientY + window.scrollY - (clickY - currentY)
 
-    center.style.left = newX + "px"
-    center.style.top = newY + "px"
+    console.log("newX", newX)
+    console.log("newY", newY)
 
+
+    element.style.left = newX + "px"
+    element.style.top = newY + "px"
+
+    console.log("element.left",element.style.left)
+    console.log("element.top",element.style.top)
 
 }
-
 
 window.addEventListener("mousemove", mousemove)
 
 }   
 
 mouseup = (e) => {
-    e.preventDefault()
     window.removeEventListener("mousemove", mousemove)
 }
      
-
-// center.addEventListener("mousedown", drag)
-// window.addEventListener("mouseup", mouseup)
-
-function rotateable(elements){
-    this.elements= elements;
-    this.rotate = rotateElements(className, stopElement);
-
-}
-
-  
 
 positionElementCircle = (className, centerX, centerY, radius) =>{
     const elements = document.querySelectorAll('.' + className)
@@ -63,11 +57,7 @@ positionElementCircle = (className, centerX, centerY, radius) =>{
 positionElementSquare = (className, centerX, centerY, width, height) =>{
     const elements = document.querySelectorAll('.' + className)
     console.log(elements)
-    // const className = document.querySelector('.center')
-    // elements.style.left = centerX + 'px'
-    // elements.style.top = centerY + 'px'
 
-    
     let interval = (2 * Math.PI) / elements.length
     console.log(interval)
     let theta1 = Math.atan(height/width)
@@ -120,9 +110,7 @@ positionElementSquare = (className, centerX, centerY, width, height) =>{
         console.log("y :", y)
         console.log("x :", x)
         element.style.left = x + "px"
-        element.style.top = y + "px"
-        // element.innerHTML=i
-       
+        element.style.top = y + "px"       
         theta += interval
         i += 1
         console.log("theta :",theta)
@@ -130,92 +118,50 @@ positionElementSquare = (className, centerX, centerY, width, height) =>{
 }
 
 rotateElements = (className, stopElement) => {
-    elements = document.querySelectorAll('.' + className)
+  let  elements = document.querySelectorAll('.' + className)
     
-    const interval = setInterval(() => {
+    const intervalId = setInterval(() => {
         let position0 = elements[0].style.left
         let position1 = elements[0].style.top
         for (let i = 0; i < elements.length; i++){   
             if (i < elements.length - 1){
                 console.log("i:",i)
                 console.log("element",elements[i])
-                // elements[i].animate({left: elements[i + 1].style.left,
-                //                     top: elements[i + 1].style.top})
-               elements[i].style.left = elements[i + 1].style.left
+                elements[i].style.left = elements[i + 1].style.left
                 elements[i].style.top = elements[i + 1].style.top
             }
             else{ 
                 console.log("in else")
                 console.log("position0:", position0)
                 console.log("position1:", position1)
-                // elements[i].animate({left: '100px',
-                //     top: '500px'})
                 elements[i].style.left = position0
                 elements[i].style.top = position1
             }
         }}, 4000)
 
-        stopFunction = () =>{
-            console.log("stopping function")
-            clearInterval(interval)
-            return
-
-        }
-
-        // const stopElement = document.querySelector('.' + stopElement);
-        stopElement.addEventListener("click", stopFunction )                    
+        stopElement.addEventListener("click", () => stopFunction(intervalId))                    
     }
 
-    rotateElements2 = (className, stopElement) => {
-        elements = document.querySelectorAll('.' + className)
-        
-        const interval = setInterval(() => {
-            let position0 = elements[0].style.left
-            let position1 = elements[0].style.top
-            for (let i = 0; i < elements.length; i++){   
-                if (i < elements.length - 1){
-                    console.log("i:",i)
-                    console.log("element",elements[i])
-                    // elements[i].animate({left: elements[i + 1].style.left,
-                    //                     top: elements[i + 1].style.top})
-                   elements[i].style.left = elements[i + 1].style.left
-                    elements[i].style.top = elements[i + 1].style.top
-                }
-                else{ 
-                    console.log("in else")
-                    console.log("position0:", position0)
-                    console.log("position1:", position1)
-                    // elements[i].animate({left: '100px',
-                    //     top: '500px'})
-                    elements[i].style.left = position0
-                    elements[i].style.top = position1
-                }
-            }}, 4000)
-    
-            stopFunction = () =>{
-                console.log("stopping function")
-                clearInterval(interval)
-                return
-    
-            }
-    
-            // const stopElement = document.querySelector('.' + stopElement);
-            stopElement.addEventListener("click", stopFunction )                    
-        }
+    stopFunction = (interval) =>{
+        console.log("stopping function")
+        clearInterval(interval)
+        return
 
-animateSpriteWithId = ( id, name, num, interval) => {
+    }
+
+
+animateSpriteWithId = ( id, name, num, interval, stopElement) => {
     let img = [document.querySelector("#" + id)]
-    animateSpriteLogic(img, name, num, interval)
+    animateSpriteLogic(img, name, num, interval, stopElement)
 }   
 
-animateSpriteWithClass = (class_, name, num, interval) => {
+animateSpriteWithClass = (class_, name, num, interval, stopElement) => {
     let images = document.querySelectorAll("." + class_)
-    animateSpriteLogic(images, name, num, interval)
+    animateSpriteLogic(images, name, num, interval, stopElement)
 
 }   
 
-animateSpriteLogic = (images, name, num, interval) => {
-    // let img = img
+animateSpriteLogic = (images, name, num, interval, stopElement) => {
     let imgNum = 0
     let intervalId = setInterval(()=>{
         
@@ -243,59 +189,7 @@ animateSpriteLogic = (images, name, num, interval) => {
              
     },interval)
 
+    stopElement.addEventListener("click", () => stopFunction(intervalId)) 
+
 }
-
-window.onload = function(){
-    positionElementCircle('Moon', 300, 500, 200)
-    positionElementSquare('MoonSquare', 900, 500, 350, 350)
-}
-const Moons = document.querySelectorAll('.Moon');
-
-Moons[0].addEventListener("click", () => rotateElements("Moon"))
-
-
-
-  
-
-
-// drag = (e) => {
-//     let mouseX = null;
-//     let mouseY = null;
-
-//     setInterval(() => {
-//         if (e.type !== "mouseUp"){
-//             let mouseX = e.clientX;
-//             let mouseY = e.clientY;
-//             console.log(e)
-//             console.log("clientX:",mouseX)
-//             console.log("clientY:",mouseY)
-
-//     }}, 100
-//         )
-    
-//     return mouseX, mouseY
-// }   
-
-
-        
-            
-
-//    while (true) {
-//        console.log("i:", i)
-//        if (i < elements.length - 1){
-//         elements[i].style.left = elements[i + 1].style.left
-//         elements[i].style.top = elements[i + 1].style.top
-//         setTimeout(() => {
-//             i += 1
-//         }, 3000)
-        
-//        }
-//        else {
-//         elements[i].style.left = elements[0].style.left
-//         elements[i].style.top = elements[0].style.top
-//         setTimeout(() => {
-//             i = 0 
-//         }, 3000)
-//        }
-      
-//    }
+window.addEventListener("mouseup", mouseup)

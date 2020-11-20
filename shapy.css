@@ -28,6 +28,7 @@
 .knightSpriteC {
     width: 450px;
     height: 200px;
+    float: left;
 }
 
 #banner {
@@ -72,6 +73,8 @@ p {
     margin-top: 45%;
 
 }
+
+
 
 
 
