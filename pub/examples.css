@@ -10,6 +10,10 @@ body {
     height: 100vh;
 }
 
+.moonDemo { 
+    height:80%
+} 
+
 .Moon {
     position: absolute;
     transition: linear 4000ms;
@@ -39,23 +43,17 @@ p {
 
 .rotationButtons {
     position: relative;
-    margin-top: 45%;
+    margin-bottom: 10%;
 
 }
 
 .rotationButtonsLeft {
-    position: absolute;
-    left: 275px;
-    top: 70%;
-    margin-bottom: 10%;
+    margin-left: 16%;
 
 }
 
 .rotationButtonsRight {
-    position: absolute;
-    top: 70%;
-    left: 865px;
-    margin-bottom: 10%;
+   margin-left: 24%;
 }
 
 .green {
@@ -94,10 +92,8 @@ p {
 
 .moveable {
     border: 5px solid black;
-    position: static;
-    float: left;
     height: 30%;
-    width: 100%;
+    width: 98%;
     margin-top: 3%;
     overflow: hidden;
 }
@@ -107,7 +103,7 @@ p {
     background-color: blue;
     height: 3%;
     width: 8%;
-    top: 202%;
+    top: 212.5%;
     left: 1%;
 }
 
@@ -116,7 +112,7 @@ p {
     background-color: greenyellow;
     height: 3%;
     width: 6%;
-    top: 199%;
+    top: 209.5%;
     left: 2%;
 
 }
@@ -126,11 +122,30 @@ p {
     background-color: red;
     height: 3%;
     width: 4%;
-    top: 196%;
+    top: 206.5%;
     left: 3%;
 
 }
 
 .stand {
     margin-top: 4.5%;
+}
+
+.testRotate {
+    width: 150px;
+    height: 150px;
+    background-color: orange;
+    margin: auto;
+    top: 30%;
+    position: relative;
+}
+
+.rotateDemo {
+    border: 5px solid black;
+    margin-top: 10vh;
+    width: 98vw;
+    height: 40vh;
+    float: left;
+    text-align: center;
+
 }

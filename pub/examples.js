@@ -3,6 +3,13 @@ window.onload = function(){
     positionElementSquare('MoonSquare', 900, 500, 350, 350)
 }
 
+// let moon0 = document.querySelector(".Moon")
+// console.log(moon0)
+// moon0.classList.add("Animateable")
+// console.log(moon0.currentlyAnimating)
+
+
+
 const leftStartButton = document.querySelector(".rotationButtonsLeft .green")
 const leftStopButton = document.querySelector(".rotationButtonsLeft .red")
 const rightStartButton = document.querySelector(".rotationButtonsRight .green")
@@ -33,4 +40,8 @@ const small = document.querySelector(".small")
 
 biggest.addEventListener("mousedown", () => drag(event))
 medium.addEventListener("mousedown", () => drag(event))
-small.addEventListener("mousedown", () => drag(event))
+// small.addEventListener("mousedown", () => drag(event))
+
+const smallDrag = new Draggable(small)
+const testRotate = document.querySelector(".testRotate")
+const smallRotate = new Rotateable(testRotate)

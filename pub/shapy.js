@@ -1,38 +1,97 @@
 
-drag = (e) => {
+
+class Draggable{
+    constructor(object){
+        object.addEventListener("mousedown", drag)
+    }  
+}
+
+
+
+class Rotateable{
+    constructor(object){
+        object.addEventListener("mousedown", rotate)
+    }
+}
+
+
+
+rotate = (e) => {
+    e.preventDefault()
     element = e.target
-    currentX = element.getBoundingClientRect().left
-    currentY = element.getBoundingClientRect().top
-    console.log("currentX,Y", currentX, currentY)
-    clickX = e.clientX
-    clickY = e.clientY
-    console.log("clickX,Y", clickX, clickY)
     console.log(element)
+    const origX = e.clientX
+    const origY = e.clientY
+    console.log("origx, origy", origX, origY)
 
-mousemove = (e) => {
-
-    let newX = e.clientX + window.scrollX - (clickX - currentX)
-    let newY = e.clientY + window.scrollY - (clickY - currentY)
-
-    console.log("newX", newX)
-    console.log("newY", newY)
+ 
 
 
-    element.style.left = newX + "px"
-    element.style.top = newY + "px"
+    function mouseMove (e) {
+        console.log("in mousemove, element is:", element)
+        let newX = e.clientX
+        let newY = e.clientY
 
-    console.log("element.left",element.style.left)
-    console.log("element.top",element.style.top)
+        console.log("newX, newY", newX, newY)
+
+
+        let xOffset = newX - origX
+        let yOffset = newY - origY
+
+        console.log("xoff, yoff", xOffset, yOffset)
+
+        let theta = Math.atan(yOffset/xOffset)
+        console.log("theta is", theta)
+        element.style.transform = "rotate(" + theta + "rad)"
+        
+    }
+
+    function mouseUp() {
+        console.log("mouse up")
+        window.removeEventListener("mousemove", mouseMove)
+    }
+
+    window.addEventListener("mousemove", mouseMove)
+    window.addEventListener("mouseup", mouseUp)
 
 }
 
-window.addEventListener("mousemove", mousemove)
 
-}   
 
-mouseup = (e) => {
-    window.removeEventListener("mousemove", mousemove)
-}
+
+
+drag = (e) => {
+    e.preventDefault()
+    const element = e.target
+    const currentX = element.getBoundingClientRect().left
+    const currentY = element.getBoundingClientRect().top
+    // console.log("currentX,Y", currentX, currentY)
+    const clickX = e.clientX
+    const clickY = e.clientY
+    // console.log("clickX,Y", clickX, clickY)
+    console.log(element)
+    
+
+    function mouseMove (e) {
+
+        let newX = e.clientX + window.scrollX - (clickX - currentX)
+        let newY = e.clientY + window.scrollY - (clickY - currentY)
+        element.style.left = newX + "px"
+        element.style.top = newY + "px"
+    }
+
+    function mouseUp() {
+        console.log("mouse up")
+        window.removeEventListener("mousemove", mouseMove)
+    }
+
+    window.addEventListener("mousemove", mouseMove)
+    window.addEventListener("mouseup", mouseUp)
+
+}  
+
+
+
      
 
 positionElementCircle = (className, centerX, centerY, radius) =>{
@@ -53,6 +112,11 @@ positionElementCircle = (className, centerX, centerY, radius) =>{
         console.log("theta :",theta)
     })
 }
+
+
+
+
+
 
 positionElementSquare = (className, centerX, centerY, width, height) =>{
     const elements = document.querySelectorAll('.' + className)
@@ -117,37 +181,61 @@ positionElementSquare = (className, centerX, centerY, width, height) =>{
     })
 }
 
+
+
+
+
 rotateElements = (className, stopElement) => {
-  let  elements = document.querySelectorAll('.' + className)
+  let elements = document.querySelectorAll('.' + className)
+  if (elements[0].currentlyAnimating){
+      return
+  }
+
+  elements.forEach((element) => {
+      element.currentlyAnimating = true
+  })
+  rotate = () => {
+    let position0 = elements[0].style.left
+    let position1 = elements[0].style.top
+    for (let i = 0; i < elements.length; i++){   
+        if (i < elements.length - 1){
+            console.log("i:",i)
+            console.log("element",elements[i])
+            elements[i].style.left = elements[i + 1].style.left
+            elements[i].style.top = elements[i + 1].style.top
+        }
+        else{ 
+            console.log("in else")
+            console.log("position0:", position0)
+            console.log("position1:", position1)
+            elements[i].style.left = position0
+            elements[i].style.top = position1
+        }
+    }}
     
-    const intervalId = setInterval(() => {
-        let position0 = elements[0].style.left
-        let position1 = elements[0].style.top
-        for (let i = 0; i < elements.length; i++){   
-            if (i < elements.length - 1){
-                console.log("i:",i)
-                console.log("element",elements[i])
-                elements[i].style.left = elements[i + 1].style.left
-                elements[i].style.top = elements[i + 1].style.top
-            }
-            else{ 
-                console.log("in else")
-                console.log("position0:", position0)
-                console.log("position1:", position1)
-                elements[i].style.left = position0
-                elements[i].style.top = position1
-            }
-        }}, 4000)
+    rotate()
+    let intervalId = setInterval(rotate, 4000)
 
-        stopElement.addEventListener("click", () => stopFunction(intervalId))                    
+    stopElement.addEventListener("click", () => stopFunction(elements, intervalId)) 
+        
     }
 
-    stopFunction = (interval) =>{
-        console.log("stopping function")
-        clearInterval(interval)
-        return
 
-    }
+
+
+
+stopFunction = (elements, intervalId) => {
+    console.log("stopping function")
+    elements.forEach((element) => {
+        element.currentlyAnimating = false
+    })
+    clearInterval(intervalId)
+    
+    return
+
+}
+
+    
 
 
 animateSpriteWithId = ( id, name, num, interval, stopElement) => {
@@ -155,14 +243,31 @@ animateSpriteWithId = ( id, name, num, interval, stopElement) => {
     animateSpriteLogic(img, name, num, interval, stopElement)
 }   
 
+
+
+
+
 animateSpriteWithClass = (class_, name, num, interval, stopElement) => {
     let images = document.querySelectorAll("." + class_)
     animateSpriteLogic(images, name, num, interval, stopElement)
 
 }   
 
+
+
+
+
 animateSpriteLogic = (images, name, num, interval, stopElement) => {
     let imgNum = 0
+
+    if (images[0].currentlyAnimating){
+        return
+    }
+  
+    images.forEach((image) => {
+        image.currentlyAnimating = true
+    })
+
     let intervalId = setInterval(()=>{
         
         try{
@@ -189,7 +294,6 @@ animateSpriteLogic = (images, name, num, interval, stopElement) => {
              
     },interval)
 
-    stopElement.addEventListener("click", () => stopFunction(intervalId)) 
+    stopElement.addEventListener("click", () => stopFunction(images, intervalId)) 
 
 }
-window.addEventListener("mouseup", mouseup)

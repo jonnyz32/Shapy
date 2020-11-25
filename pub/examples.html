@@ -4,9 +4,11 @@
 <head>
   <meta charset="utf-8">
   <title>Shapy</title>
+  <script src="dom_load.js"></script>
   <link href="examples.css" rel="stylesheet">
-  <script src="examples.js" defer></script>
-  <script src="shapy.js" defer></script>
+  <script defer src="shapy.js" ></script>
+  <script defer src="examples.js" ></script>
+
 </head>
 
   <body>
@@ -22,6 +24,9 @@
     moons in each orbit, to watch them rotate around the Earth!
   </p>
 
+
+
+  <div class="moonDemo"> 
   <img id="Earth" src="Earth.png">
 
   <div class="Moon">
@@ -57,8 +62,8 @@
     <img src="moon.png">
   </div>
 
-<!-- Square moon orbit -->
-<img id="EarthSquare" src="Earth.png">
+ <!-- Square moon orbit  -->
+  <img id="EarthSquare" src="Earth.png">
   <div class="MoonSquare">
     <p>Full moon</p>
     <img src="moon.png">
@@ -91,17 +96,19 @@
     <p>Wasxing Gibbous</p>
     <img src="moon.png">
   </div>
+</div> 
 
   <div class="rotationButtons">
-    <div class="rotationButtonsLeft">
-      <button class="green">Start Rotation</button>
-      <button class="red">Stop Rotation</button>
-    </div>
-    <div class="rotationButtonsRight">
-      <button class="green">Start Rotation</button>
-      <button class="red">Stop Rotation</button>
-    </div> 
-  </div>
+  <span class="rotationButtonsLeft">
+    <button class="green">Start Rotation</button>
+    <button class="red">Stop Rotation</button>
+  </span>
+  <span class="rotationButtonsRight">
+    <button class="green">Start Rotation</button>
+    <button class="red">Stop Rotation</button>
+  </span> 
+</div>
+  
   
   <div class="animations">
     <p>Now let's see what kinds of animations we can do with this library. If we want to animate all objects with the
@@ -128,10 +135,12 @@
 
   </div>
 
+
+  
   <div class="moveable">
     <p>If you want to define some user moveable objects, you can do that with the drag function. Try to complete the tower of Hanoi game below.
       There isn't any rules enforced here, so no cheating!
-    </p>
+    </p> 
    
     <div class="small"></div>
     <div class="medium"></div>
@@ -140,6 +149,15 @@
     <img class="stand" src="stand.png" >
     <img class="stand" src="stand.png" >
   </div>
+
+  
+  <div class="rotateDemo">
+    <p>Now lets see some rotational examples. Drag the wheel to steer.</p>
+    <img class="testRotate" src="steeringwheel.jpg">
+
+
+  </div> 
+  
 
   
 
