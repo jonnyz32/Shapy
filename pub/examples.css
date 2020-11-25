@@ -11,7 +11,8 @@ body {
 }
 
 .moonDemo { 
-    height:80%
+    height:80%;
+    min-height: 700px;
 } 
 
 .Moon {
@@ -132,11 +133,9 @@ p {
 }
 
 .testRotate {
-    width: 150px;
-    height: 150px;
+    height: 60%;
     background-color: orange;
     margin: auto;
-    top: 30%;
     position: relative;
 }
 
@@ -145,7 +144,7 @@ p {
     margin-top: 10vh;
     width: 98vw;
     height: 40vh;
-    float: left;
+    position: relative;
     text-align: center;
 
 }
