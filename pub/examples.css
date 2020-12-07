@@ -1,10 +1,63 @@
-#banner {
+/* #banner {
     padding: 2%;
     text-align: center;
     margin: 0%;
     background-color: steelblue;
     color: white;
+} */
+
+.banner {
+    height: 6%;
+    padding-left: 15%;
+    background-color: whitesmoke;
+    border-bottom: 1px solid gainsboro;
+    font-family: cursive;
+    font-size: xx-large;
+    color: goldenrod;
 }
+
+.banner .rs {
+    float: right;
+    padding-right: 25% ;
+    text-align: right;
+    font-family: cursive;
+    font-size: medium;
+    padding-top: 1%;
+}
+
+.banner .rs a {
+padding-right: 15px;
+text-decoration: none;
+color: dimgray;
+
+}
+
+.banner .rs a:hover {
+    color: goldenrod;
+    
+    }
+
+.header {
+    margin-top: 5%;
+    padding-left: 15%;
+    font-size:50px;
+    font-weight: bold;
+    color: indianred;
+}
+
+.outer {
+    position: relative;
+    margin-left: 15%;
+    margin-right: 15%;
+    
+}
+
+.outer h2 {
+    font-weight: bold;
+    color: indianred;
+
+}
+
 body {
     margin: 0px;
     height: 100vh;
@@ -27,14 +80,14 @@ body {
 
 #Earth {
     position: absolute;
-    left: 275px;
-    top: 515px;
+    left: 170px;
+    top: 320px;
 }
 
 #EarthSquare {
     position: absolute;
-    left: 865px;
-    top: 520px;
+    left: 770px;
+    top: 320px;
 }
 
 p {
@@ -49,12 +102,12 @@ p {
 }
 
 .rotationButtonsLeft {
-    margin-left: 16%;
+    margin-left: 13%;
 
 }
 
 .rotationButtonsRight {
-   margin-left: 24%;
+   margin-left: 35%;
 }
 
 .green {
@@ -66,70 +119,92 @@ p {
 }
 
 .animations {
-    float:left;
+    position: relative;
     margin-top: 4%;
 
 }
 
 .knightSpriteC {
-    width: 450px;
-    height: 200px;
+    width: 360px;
+    height: 160px;
 }
 
 #knightSprite {
-    width: 450px;
-    height: 200px;
+    width: 360px;
+    height: 160px;
 }
 
-.withId button {
+/* .withId button {
 
     float: left;
+} */
+
+.withId {
+    position: relative;
+    margin-top: 10%;
 }
 
-.withClass button {
+
+/* .withClass button {
 
     float: left;
-}
+} */
 
+#move {
+    margin-top: 10%;
+}
 .moveable {
-    border: 5px solid black;
+    /* border: 5px solid black; */
+    background-color: whitesmoke;
     height: 30%;
-    width: 98%;
-    margin-top: 3%;
-    overflow: hidden;
+    /* width: 98%; */
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-top: 5%;
+    position: relative;
+    color: indianred;
+    /* overflow: hidden; */
 }
+
+.indianRed {
+    color: indianred;
+    margin-left: 15%;
+}
+
+.dragH2 {margin-top: 10%;}
+
 
 .biggest {
     position: absolute;
     background-color: blue;
-    height: 3%;
+    height: 8%;
     width: 8%;
-    top: 212.5%;
-    left: 1%;
+    top: 85%;
+    left: 3%;
 }
 
 .medium {
     position: absolute;
     background-color: greenyellow;
-    height: 3%;
+    height: 8%;
     width: 6%;
-    top: 209.5%;
-    left: 2%;
+    top: 77%;
+    left: 4%;
 
 }
 
 .small {
     position: absolute;
     background-color: red;
-    height: 3%;
+    height: 8%;
     width: 4%;
-    top: 206.5%;
-    left: 3%;
+    top: 69%;
+    left: 5%;
 
 }
 
 .stand {
-    margin-top: 4.5%;
+    margin-top: 10.5%;
 }
 
 .testRotate {
@@ -140,11 +215,42 @@ p {
 }
 
 .rotateDemo {
-    border: 5px solid black;
+    /* border: 5px solid black; */
     margin-top: 10vh;
-    width: 98vw;
+    margin-left: 15%;
+    margin-right: 15%;
+    /* width: 98vw; */
     height: 40vh;
     position: relative;
     text-align: center;
 
+}
+
+.stretchDemo {
+    /* border: 5px solid black; */
+    /* width: 98vw; */
+    margin-left: 15%;
+    margin-right: 15%;
+    height: 40vh;
+    position: relative;
+    text-align: center;
+    background-color: whitesmoke;
+
+}
+
+.resizeObject {
+    position: absolute;
+    background-color: blue;
+    width: 100px;
+    height: 100px;
+    left: 40%;
+    top: 40%;
+}
+
+#pStretch {
+    margin-top: 10vh;
+}
+
+.end {
+    padding-bottom: 12%;
 }

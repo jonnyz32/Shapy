@@ -6,11 +6,86 @@ class Draggable{
     }  
 }
 
+class DraggableRelative{
+    constructor(object){
+        object.addEventListener("mousedown", dragRelative)
+    }  
+}
+
+
 
 
 class Rotateable{
     constructor(object){
         object.addEventListener("mousedown", rotate)
+    }
+}
+
+class Resizeable {
+    constructor(object){
+        const ne = document.createElement('div')
+        const se = document.createElement('div')
+        const sw = document.createElement('div')
+        const nw = document.createElement('div')
+
+        ne.classList.add("handle")
+        ne.classList.add("ne")
+
+        se.classList.add("handle")
+        se.classList.add("se")
+
+        sw.classList.add("handle")
+        sw.classList.add("sw")
+
+        nw.classList.add("handle")
+        nw.classList.add("nw")
+
+     
+        object.appendChild(ne)
+        object.appendChild(se)
+        object.appendChild(sw)
+        object.appendChild(nw)
+
+        const handles = document.querySelectorAll('.handle')
+
+        handles.forEach(handle => {
+            handle.style.position = "absolute"
+            handle.style.borderRadius = "50%"
+            handle.style.width = "10px";
+            handle.style.height = "10px";
+            handle.style.backgroundColor = "white";
+            handle.style.border = "1px solid black";
+
+        })
+
+        nw.style.top = "-5px"
+        nw.style.left = "-5px"
+
+        ne.style.top = "-5px"
+        ne.style.right = "-5px"
+
+        sw.style.bottom = "-5px"
+        sw.style.left = "-5px"
+
+        se.style.bottom = "-5px"
+        se.style.right = "-5px"
+
+        ne.addEventListener("mousedown", () => resize(event, "ne"))
+        se.addEventListener("mousedown", () => resize(event, "se"))
+        sw.addEventListener("mousedown", () => resize(event, "sw"))
+        nw.addEventListener("mousedown", () => resize(event, "nw"))
+
+
+
+        object.addEventListener("mousedown", resize)
+    }
+
+}
+
+class dragAndResize extends Resizeable {
+    constructor(object){
+        super(object)
+        object.addEventListener("mousedown", dragRelative)
     }
 }
 
@@ -23,6 +98,8 @@ rotate = (e) => {
     const origX = e.clientX
     const origY = e.clientY
     console.log("origx, origy", origX, origY)
+    let theta = 0
+
 
  
 
@@ -38,12 +115,102 @@ rotate = (e) => {
         let xOffset = newX - origX
         let yOffset = newY - origY
 
-        console.log("xoff, yoff", xOffset, yOffset)
+        // if (xOffset > 0 && yOffset < 0){
+        //     theta = Math.atan(yOffset/xOffset)
 
-        let theta = Math.atan(yOffset/xOffset)
+        // }
+
+        // else if (xOffset <= 0 && yOffset < 0){
+        //     theta = -1 * Math.atan(yOffset/xOffset)
+
+        // }
+
+        theta = Math.atan(yOffset/xOffset)
+        if (theta > 1.56){
+            theta = -theta
+        }
+
+
+        console.log("xoff, yoff", xOffset, yOffset)
         console.log("theta is", theta)
         element.style.transform = "rotate(" + theta + "rad)"
         
+    }
+
+    function mouseUp() {
+        console.log("mouse up")
+        window.removeEventListener("mousemove", mouseMove)
+    }
+
+    window.addEventListener("mousemove", mouseMove)
+    window.addEventListener("mouseup", mouseUp)
+
+}
+
+resize = (e, handler) => {
+    e.preventDefault()
+    const element = e.target.parentElement
+    const currentX = element.getBoundingClientRect().left
+    const currentY = element.getBoundingClientRect().top
+    const parentXOffset = element.parentElement.offsetLeft
+    const parentYOffset = element.parentElement.offsetTop
+    const elementWidth = element.clientWidth
+    const elementHeight = element.clientHeight
+    // console.log("currentX,Y", currentX, currentY)
+    // const clickX = e.clientX
+    // const clickY = e.clientY
+    // console.log("clickX,Y", clickX, clickY)
+    console.log(element)
+    console.log("currentY, element height, y + elem height", currentY, elementHeight, currentY + elementHeight)
+
+    function mouseMove (e) {
+        if  (handler === "ne"){
+            console.log("in ne")
+            element.style.width = e.clientX - currentX + "px"
+            let newTop = e.clientY + scrollY - parentYOffset
+            console.log("newTop", newTop)
+            // element.style.top = Math.min(newTop, 385) + "px"
+            element.style.top = Math.min(newTop, currentY + elementHeight + scrollY- parentYOffset) + "px"
+            // element.style.height = elementHeight + "px"
+            // console.log("currentY, newTop, currentY- new top", currentY, newTop, currentY - newTop)
+            element.style.height = elementHeight + (currentY - e.clientY) + "px"
+
+        }
+
+        else if (handler === "se"){
+            console.log("in se")
+            element.style.width = e.clientX - currentX + "px"
+            element.style.height = e.clientY - currentY + "px"
+            console.log("width", e.clientX - currentX)
+            console.log("height", e.clientY - currentY)
+
+        }
+
+        else if (handler === "sw"){
+            console.log("in sw")
+            element.style.height = e.clientY - currentY + "px"
+            let newLeft = e.clientX
+            element.style.left = Math.min(newLeft - parentXOffset, currentX + elementWidth - parentXOffset) + "px"
+            element.style.width = elementWidth + (currentX - newLeft) + "px"
+
+        }
+
+        else if (handler === "nw"){
+            console.log("in nw")
+            let newTop = e.clientY + scrollY - parentYOffset
+            console.log("newTop", newTop)
+            // element.style.top = Math.min(newTop, 385) + "px"
+            element.style.top = Math.min(newTop, currentY + elementHeight + scrollY- parentYOffset) + "px"
+            // element.style.height = elementHeight + "px"
+            // console.log("currentY, newTop, currentY- new top", currentY, newTop, currentY - newTop)
+            element.style.height = elementHeight + (currentY - e.clientY) + "px"
+
+            let newLeft = e.clientX
+            element.style.left = Math.min(newLeft - parentXOffset, currentX + elementWidth - parentXOffset) + "px"
+            element.style.width = elementWidth + (currentX - newLeft) + "px"
+
+        }
+
     }
 
     function mouseUp() {
@@ -68,7 +235,7 @@ drag = (e) => {
     // console.log("currentX,Y", currentX, currentY)
     const clickX = e.clientX
     const clickY = e.clientY
-    // console.log("clickX,Y", clickX, clickY)
+    console.log("clickX,Y", clickX, clickY)
     console.log(element)
     
 
@@ -76,6 +243,7 @@ drag = (e) => {
 
         let newX = e.clientX + window.scrollX - (clickX - currentX)
         let newY = e.clientY + window.scrollY - (clickY - currentY)
+        console.log("newX,newY", newX, newY)
         element.style.left = newX + "px"
         element.style.top = newY + "px"
     }
@@ -90,6 +258,61 @@ drag = (e) => {
 
 }  
 
+
+dragRelative = (e) => {
+    e.preventDefault()
+    const element = e.target
+    const elemWidth = element.clientWidth
+    const elemHeight = element.clientHeight
+    const currentX = element.getBoundingClientRect().left
+    const currentY = element.getBoundingClientRect().top
+    // console.log("currentX,Y", currentX, currentY)
+    const clickX = e.clientX
+    const clickY = e.clientY
+    const parentXOffset = element.parentElement.offsetLeft
+    const parentYOffset = element.parentElement.offsetTop
+    const parentWidth = element.parentElement.clientWidth
+    const parentHeight = element.parentElement.clientHeight
+    console.log("clickX,Y", clickX, clickY)
+    console.log(element)
+    
+
+    function mouseMove (e) {
+
+        let newX = e.clientX + window.scrollX - (clickX - currentX + parentXOffset)
+        let newY = e.clientY + window.scrollY - (clickY - currentY + parentYOffset)
+        console.log("newX,newY", newX, newY)
+
+        if (newX + elemWidth >= parentWidth ){
+            newX -= 10
+            mouseUp()
+        }
+        if ( newX <= 0 ){
+            newX += 10
+            mouseUp()
+        }
+        if (newY + elemHeight >= parentHeight ){
+            newY -= 10
+            mouseUp()
+        }
+        if (newY <= 0){
+            newY += 10
+            mouseUp()
+        }
+        console.log("elemWidth", elemWidth)
+        element.style.left = newX + "px"
+        element.style.top = newY + "px"
+    }
+
+    function mouseUp() {
+        console.log("mouse up")
+        window.removeEventListener("mousemove", mouseMove)
+    }
+
+    window.addEventListener("mousemove", mouseMove)
+    window.addEventListener("mouseup", mouseUp)
+
+}  
 
 
      
@@ -185,7 +408,7 @@ positionElementSquare = (className, centerX, centerY, width, height) =>{
 
 
 
-rotateElements = (className, stopElement) => {
+rotateElements = (className, stopElement, interval, transition) => {
   let elements = document.querySelectorAll('.' + className)
   if (elements[0].currentlyAnimating){
       return
@@ -193,6 +416,7 @@ rotateElements = (className, stopElement) => {
 
   elements.forEach((element) => {
       element.currentlyAnimating = true
+      element.style.transition = transition + " " + 4000 + "ms"
   })
   rotate = () => {
     let position0 = elements[0].style.left
@@ -214,7 +438,7 @@ rotateElements = (className, stopElement) => {
     }}
     
     rotate()
-    let intervalId = setInterval(rotate, 4000)
+    let intervalId = setInterval(rotate, interval)
 
     stopElement.addEventListener("click", () => stopFunction(elements, intervalId)) 
         
@@ -228,6 +452,8 @@ stopFunction = (elements, intervalId) => {
     console.log("stopping function")
     elements.forEach((element) => {
         element.currentlyAnimating = false
+        element.style.transition = 'none'
+
     })
     clearInterval(intervalId)
     
@@ -238,18 +464,18 @@ stopFunction = (elements, intervalId) => {
     
 
 
-animateSpriteWithId = ( id, name, num, interval, stopElement) => {
+animateSpriteWithId = ( id, name, num, interval, stopElement, ext) => {
     let img = [document.querySelector("#" + id)]
-    animateSpriteLogic(img, name, num, interval, stopElement)
+    animateSpriteLogic(img, name, num, interval, stopElement, ext)
 }   
 
 
 
 
 
-animateSpriteWithClass = (class_, name, num, interval, stopElement) => {
+animateSpriteWithClass = (class_, name, num, interval, stopElement, ext) => {
     let images = document.querySelectorAll("." + class_)
-    animateSpriteLogic(images, name, num, interval, stopElement)
+    animateSpriteLogic(images, name, num, interval, stopElement, ext)
 
 }   
 
@@ -257,7 +483,7 @@ animateSpriteWithClass = (class_, name, num, interval, stopElement) => {
 
 
 
-animateSpriteLogic = (images, name, num, interval, stopElement) => {
+animateSpriteLogic = (images, name, num, interval, stopElement, ext) => {
     let imgNum = 0
 
     if (images[0].currentlyAnimating){
@@ -272,7 +498,7 @@ animateSpriteLogic = (images, name, num, interval, stopElement) => {
         
         try{
             images.forEach((img) => {
-                img.src = name + imgNum + '.png'
+                img.src = name + imgNum + ext
                 // if (!fs.existsSync('path/to/fileThatMightNotExist.json')) {
                 //     clearInterval(intervalId)
                     

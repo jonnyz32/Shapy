@@ -12,20 +12,33 @@
 </head>
 
   <body>
-  <h1 id="banner"> Welcome to Shapy.js</h1>
+    <div class="banner">
+      <span>Shapy.js</span>
+      <div class= "rs">
+        <span><a href="./examples.html">Examples</a></span>
+        <span><a href="./api.html">API</a></span>
 
-  <p>Use Shapy.js for all your geometric dom manipulation, such as specifying shape alignments for elements, rotating 
+      </div> 
+
+  </div>
+  <!-- <h1 id="banner"> Welcome to Shapy.js</h1> -->
+
+  <!-- <p>Use Shapy.js for all your geometric dom manipulation, such as specifying shape alignments for elements, rotating 
     around in shapes, animating elements, moving elements and many more!
-  </p>
+  </p> -->
 
-  <p>Let's say we want to display a diagram of the Moon's orbit around the Earth. We can do that by calling positionElementCircle on 
+  <div class="header"> Examples</div>
+
+
+  <!-- <p>Let's say we want to display a diagram of the Moon's orbit around the Earth. We can do that by calling positionElementCircle on 
     our moon element class. If for some reason, we wanted the moon's to have a square orbit, we could do that easily by calling positionElementSquare
     on our moon class. If you want to watch the moon's actually orbit, we can simulate this by using the rotateElements function. Click on one of them
     moons in each orbit, to watch them rotate around the Earth!
-  </p>
+  </p> -->
 
 
-
+<div class="outer">
+  <h2>Circular and Square positioning combined with rotational class </h2>
   <div class="moonDemo"> 
   <img id="Earth" src="Earth.png">
 
@@ -111,9 +124,10 @@
   
   
   <div class="animations">
-    <p>Now let's see what kinds of animations we can do with this library. If we want to animate all objects with the
+    <!-- <p>Now let's see what kinds of animations we can do with this library. If we want to animate all objects with the
         same  class, we can call the function animateSpriteWithClass. Use the buttons below to control the animation!
-    </p>
+    </p> -->
+    <h2>Animate elements by class</h2>
     <div class="withClass">
         <img class="knightSpriteC" src="./knightAttackSprites/tile0.png" >
         <img class="knightSpriteC" src="./knightAttackSprites/tile0.png" >
@@ -124,23 +138,32 @@
     
 
     <div class="withId">
-        <p>If instead we want to animate a single element with a given id, we can use the animateSpriteWithId function.</p>
+      <div>
+        <h2>Animate elements with Id</h2>
+        <!-- <p>If instead we want to animate a single element with a given id, we can use the animateSpriteWithId function.</p> -->
         <img id="knightSprite" src="./knightAttackSprites/tile0.png" >
+
+      </div>
+      
         <button class="green">Start animation</button>
         <button class="red">Stop animation</button>
-
+  
+        
     </div>
+    
    
 
-
+    <h2 class="dragH2">Draggable elements</h2>
   </div>
+</div>
 
 
-  
+
   <div class="moveable">
-    <p>If you want to define some user moveable objects, you can do that with the drag function. Try to complete the tower of Hanoi game below.
+    
+    <!-- <p>If you want to define some user moveable objects, you can do that with the drag function. Try to complete the tower of Hanoi game below.
       There isn't any rules enforced here, so no cheating!
-    </p> 
+    </p>  -->
    
     <div class="small"></div>
     <div class="medium"></div>
@@ -151,12 +174,30 @@
   </div>
 
   
+  <h2 class="indianRed dragH2">Rotateable. Turn the wheel to steer!</h2>
+
   <div class="rotateDemo">
-    <p>Now lets see some rotational examples. Drag the wheel to steer.</p>
+    
     <img class="testRotate" src="steeringwheel.jpg">
 
 
   </div> 
+
+<!-- <p id="pStretch">By creating a resizable object, you can give the user the ability to resize the object in any direction.</p> -->
+
+<div class="end">
+  <h2 class="indianRed">Resizeable elements</h2>
+  <div class="stretchDemo">
+    
+    <div class="resizeObject"></div>
+
+</div>
+
+
+
+  </div> 
+<!-- </div> -->
+
   
 
   

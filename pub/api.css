@@ -1,0 +1,122 @@
+body {
+    margin: 0px;
+    width: 100vw;
+    height: 100vh;
+}
+
+.banner {
+    height: 6%;
+    padding-left: 15%;
+    background-color: whitesmoke;
+    border-bottom: 1px solid gainsboro;
+    font-family: cursive;
+    font-size: xx-large;
+    color: goldenrod;
+}
+.banner .rs {
+    float: right;
+    padding-right: 25% ;
+    text-align: right;
+    font-family: cursive;
+    font-size: medium;
+    padding-top: 1%;
+}
+
+.banner .rs a {
+padding-right: 15px;
+text-decoration: none;
+color: dimgray;
+
+}
+
+.banner .rs a:hover {
+    color: goldenrod;
+    
+    }
+
+.header {
+    margin-top: 5%;
+    padding-left: 15%;
+    font-size:50px;
+    font-weight: bold;
+    color: indianred;
+}
+
+.header p {
+    font-size:30px;
+}
+
+.functions {
+    margin-left: 15%;
+    margin-right: 15%;
+    width: 70%;
+    text-align: left;
+    font-family: sans-serif;
+    font-size: large;
+    color: #252525;
+
+}
+
+.functions th {
+    font-family: sans-serif;
+    font-size: large;
+    color: #252525;
+    padding-bottom: 1%;
+
+}
+
+.functions td {
+    width: 15%;
+   vertical-align: top;
+   padding-bottom: 1%;
+   padding-top: 1%;
+   border-bottom: 1px solid gainsboro;
+
+}
+
+.functions td:nth-child(1) {
+    width: 20%;
+   vertical-align: top;
+   padding-bottom: 1%;
+   padding-top: 1%;
+   border-bottom: 1px solid gainsboro;
+   color: indianred;
+   font-weight: bold;
+
+
+}
+
+.functions td:nth-child(4) {
+    width: 50%;
+   vertical-align: top;
+   padding-bottom: 1%;
+   padding-top: 1%;
+   border-bottom: 1px solid gainsboro;
+
+
+}
+
+
+
+.examples {
+    margin-top: 10%;
+    margin-left: 15%;
+    margin-right: 15%;
+    background-color: whitesmoke;
+    padding-bottom: 3%;
+
+}
+
+.examples p{
+    padding: 8%;
+}
+
+.inner {
+    padding-top: 3%;
+    margin-left:10% ;
+}
+
+.outer {
+    padding-bottom: 10%;
+
+}

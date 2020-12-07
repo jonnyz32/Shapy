@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Shapy</title>
+  <script src="dom_load.js"></script>
+  <link href="api.css" rel="stylesheet">
+  <script defer src="shapy.js" ></script>
+
+</head>
+
+  <body>
+ 
+  
+  <div class="banner">
+      <span>Shapy.js</span>
+      <div class= "rs">
+        <span><a href="./examples.html">Examples</a></span>
+        <span><a href="./api.html">API</a></span>
+
+      </div> 
+
+  </div>
+
+  <div class="header">
+      API
+      <p>Functions</p>
+   </div>
+
+   <table class="functions">
+       <thead>
+           <th>Name</th>
+           <th>Parameters</th>
+           <th>Return</th>
+           <th>Description</th>
+        </thead>
+        <tr>
+            <td>rotate</td>
+            <td>event</td>
+            <td>null</td>
+            <td>When this function is bound to an object, the object 
+                can be rotated by holding down your mouse on the object,
+                and moving your mouse to the desired angle of rotation.
+            </td>
+        </tr>
+        <tr>
+            <td>resize</td>
+            <td>event,<br> handler:String</td>
+            <td>null</td>
+            <td>When this function is bound to an object, the object 
+                can be resized by holding down your mouse on a resize handle,
+                and dragging the div to the desired destination.</td>
+        </tr>
+        <tr>
+            <td>drag</td>
+            <td>event</td>
+            <td>null</td>
+            <td>When this function is bound to an object, the object inherits 
+                drag and drop functionality. Click the mouse and drag the object to 
+                the desired location. Only use this function on objects with absolute 
+                positioning, and with the parent not having relative position.
+                 See dragRelative to drag elements within a relative positioned parent.
+            </td>
+        </tr>
+        <tr>
+            <td>dragRelative</td>
+            <td>event</td>
+            <td>null</td>
+            <td>When this function is bound to an object, the object inherits 
+                drag and drop functionality. Click the mouse and drag the object to 
+                the desired location. Only use this function on objects with absolute 
+                positioning, and with the parent having relative position.
+            </td>
+        </tr>
+        <tr>
+            <td>positionElementCircle</td>
+            <td>className: String,<br> centerX: float,<br> centerY: float,<br> radius: float</td>
+            <td>null</td>
+            <td>This function takes in a class name, and a specification for a circle
+                with radius given by radius and center given by centerX and centerY. The elements
+                belonging to className, will be positioned absolutely according to the circle 
+                specification that was passed in.
+            </td>
+        </tr>
+        <tr>
+            <td>positionElementSquare</td>
+            <td>className: String,<br> centerX: float,<br> centerY: float,<br> width:float,<br> height: float</td>
+            <td>null</td>
+            <td>This function takes in a class name, and a specification for a rectangle
+                with width given by width, height given by height and center given by centerX and centerY. The elements
+                belonging to className, will be positioned absolutely according to the rectangle 
+                specification that was passed in.</td>
+        </tr>
+        <tr>
+            <td>rotateElements</td>
+            <td>className: string,<br> 
+                stopElement: Object,<br>
+                interval: int,<br>
+                transition: String</td>
+            <td>null</td>
+            <td>This function takes in a class name an object designated as the stop object, a time interval
+                and a css transition property. When this function is called, all elements with the given class name will rotate
+                to the position of the next element on the specified interval using the specified transition property. 
+                Press the stopElement to stop the rotation.
+            </td>
+        </tr>
+        <tr>
+            <td>animateSpriteWithId</td>
+            <td>id: String,<br> name: String,<br> num: int ,<br> interval: int,<br> stopElement: Object</td>
+            <td>null</td>
+            <td>Takes in an element with id given by id, name is the path to your images 
+                + the image prefix name, num is the number of images in the folder, interval
+                is the time in ms after which the image is changed, and stop element is the element
+                which will be clicked to stop the animation. When this function is called, the element 
+                with the passed in id, is animated by displaying the images in the given images folder
+                sequentially on the given time interval. This process repeats until the stop element is 
+                pressed.
+            </td>
+        </tr>
+        <tr>
+            <td>animateSpriteWithClass</td>
+            <td>class_: String,<br> name: String,<br> num: int,<br> interval: int,<br> stopElement: Object</td>
+            <td>null</td>
+            <td>Takes in a class with class name given by class, name is the path to your images 
+                + the image prefix name, num is the number of images in the folder, interval
+                is the time in ms after which the image is changed, and stop element is the element
+                which will be clicked to stop the animation. When this function is called, the elements 
+                with the given class name are animated by displaying the images in the given images folder
+                sequentially on the given time interval. This process repeats until the stop element is 
+                pressed.</td>
+        </tr>
+   </table>
+
+
+   <div class="header">
+    <p>Classes</p>
+   </div>
+
+   <table class="functions">
+    <thead>
+        <th>Name</th>
+        <th>Parameters</th>
+        <th>Description</th>
+     </thead>
+     <tr>
+         <td>Draggable</td>
+         <td>Object</td>
+         <td>An object of this class inherits drag and drop functionality. Only use
+             this class on an object if the parent does not have relative positioning.
+         </td>
+     </tr>
+     <tr>
+        <td>DraggableRelative</td>
+        <td>Object</td>
+        <td>An object of this class inherits drag and drop functionality. Only use
+            this class on an object if the parent has relative positioning.
+        </td>
+    </tr>
+    <tr>
+        <td>Rotateable</td>
+        <td>Object</td>
+        <td>An object of this class can be rotated by clicking on it and dragging the mouse
+            to the desired angle of rotation.
+        </td>
+    </tr>
+    <tr>
+        <td>Resizeable</td>
+        <td>Object</td>
+        <td>An object of this class is given four resize handles, one on each corner. Drag
+            the handle to resize the object.
+        </td>
+    </tr>
+     </table>
+
+   <div class ="outer">
+   <div class="examples">
+       <div class="inner">
+        <h1>Examples</h1>
+       <h2>Rotateable Element</h2>
+
+       <img src="rotateableElement.PNG" alt="">
+       <br>
+       <br>
+       <h2>Resizeable</h2>
+       <img src="resizeableElement.PNG" alt="">
+       <br>
+       <br>
+       <h2>Draggable</h2>
+       <img src="draggableElement.PNG" alt="">
+       <br>
+       <br>
+       <h2>Geometric Arrangements</h2>
+       <img src="geometricArrangement.PNG" alt="">
+       <br>
+       <br>
+       <h2>Rotateable class</h2>
+       <img src="rotateClass.PNG" alt="">
+       <br>
+       <br>
+       <h2>Animation</h2>
+       <img src="animate.PNG" alt="">
+    </div>
+</div>
+       
+       
+
+   </div>
+   
+
+
+
+  
+
+  
+
+</body>
+
+</html>
