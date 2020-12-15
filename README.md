@@ -14,8 +14,8 @@ Here are the steps to get started with shapy.js:
 1. Download the code from the github repository.
 2. Add the shapy.js file to the root directory of your project.
 3. In the head of your html page, add the following two lines in order:  
-    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script defer src="shapy.js" ></script>
+    &ltscript defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js">&lt/script&gt
+    &ltscript defer src="shapy.js" >&lt/script&gt
 
     The first is to include jquery and the second is to include shapy.js
 
