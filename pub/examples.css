@@ -162,7 +162,7 @@ p {
     margin-right: 15%;
     margin-top: 5%;
     position: relative;
-    color: indianred;
+    /* color: indianred; */
     /* overflow: hidden; */
 }
 
@@ -180,7 +180,7 @@ p {
     height: 8%;
     width: 8%;
     top: 85%;
-    left: 6%;
+    left: 3%;
 }
 
 .medium {
@@ -189,7 +189,7 @@ p {
     height: 8%;
     width: 6%;
     top: 77%;
-    left: 7%;
+    left: 4%;
 
 }
 
@@ -199,12 +199,12 @@ p {
     height: 8%;
     width: 4%;
     top: 69%;
-    left: 8%;
+    left: 5%;
 
 }
 
 .stand {
-    margin-top: 5%;
+    margin-top: 6%;
 }
 
 .testRotate {
