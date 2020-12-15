@@ -1,4 +1,4 @@
-# js-library-zakjonat
+# Shapy
 
 Library name: Shapy
 My library will aid developers in applying geometric properties and animations to the elements of their webpage. The functionality that will be included will be the ability to rotate shapes, align dom elements according to predefined geometric patterns, defining element animations, having user-moveable elements, spinnable elements, and resizeable elements.  
@@ -12,14 +12,9 @@ Getting started:
 Here are the steps to get started with shapy.js:
 
 1. Download the code from the github repository.
-<<<<<<< HEAD
 2. Add the shapy.js file to the root directory of your project.
 3. In the head of your html page, add the following two lines in order:  
     <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-=======
-2. In the head of your html page, add the following two lines in order:  
-    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script><br>
->>>>>>> 333dd9667ea1a7b5ab9c5bd1ef8cdf673dbd1580
     <script defer src="shapy.js" ></script>
 
     The first is to include jquery and the second is to include shapy.js
