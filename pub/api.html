@@ -30,13 +30,14 @@
     Here are the steps to get started with shapy.js: <br>
     
     1. Download the code from the github repository.<br><br>
-    2. In the head of your html page, add the following two lines in order:  <br>
-        &ltscript defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"&gt<br>
-        &ltscript defer src="shapy.js"&gt<br>
+    2. Add the shapy.js file to the root directory of your project.<br><br>
+    3. In the head of your html page, add the following two lines in order:  <br>
+        &ltscript defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"&gt&lt/script&gt<br>
+        &ltscript defer src="shapy.js"&gt&lt/script&gt<br>
     
         The first is to include jquery and the second is to include shapy.js<br><br>
     
-    3.  In your javascript file, add this line at the top:<br>
+    4.  In your javascript file, add this line at the top:<br>
         const shapy = new Shapy()<br>
     
         Now you can call all of shapy's methods using the new shapy object.<br>
@@ -47,7 +48,7 @@
         const element = document.querySelector(".elem")<br>
         const elementRotate = shapy.rotateable(element)<br><br>
     
-    4. Now just include your javascript file in your html file after the line including shapy.js, and you're all set!<br>
+    5. Now just include your javascript file in your html file after the line including shapy.js, and you're all set!<br>
     </p>
     
  
