@@ -3,7 +3,7 @@
 Library name: Shapy
 My library will aid developers in applying geometric properties and animations to the elements of their webpage. The functionality that will be included will be the ability to rotate shapes, align dom elements according to predefined geometric patterns, defining element animations, having user-moveable elements, spinnable elements, and resizeable elements.  
 
-Link to landing page: https://stark-bastion-08658.herokuapp.com/examples.html
+Link to landing page: https://stark-bastion-08658.herokuapp.com/examples.html <br>
 Link to documentation: https://stark-bastion-08658.herokuapp.com/api.html
 
 
