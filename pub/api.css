@@ -43,10 +43,15 @@ color: dimgray;
 }
 
 .gettingStarted {
-    padding-left: 15%;
-    background-color: whitesmoke;
+    margin-left: 15%;
+   
     font-family: sans-serif;
     padding: 1%;
+}
+
+.gettingStarted p{
+    background-color: whitesmoke;
+
 }
 
 
