@@ -1,4 +1,33 @@
 # js-library-zakjonat
 
 Library name: Shapy
-My library will aid developers in applying geometric properties and animations to the elements of their webpage. The functionality that will be included for the developer will be the ability to create shapes and specify their place in the dom, rotate shapes, align dom elements according to predefined geometric patterns, defining element animations and having user-moveable elements. The functionality available to the user will be the ability to drag and drop some user-moveable elements within a predefined space in any direction. These tasks are all quite complex and would require a lot of coding using vanilla javascript. My library will be a great help to developers by saving them from having to implement said functionality themselves. One very creative thing I mentioned was the ability to define animations. One example of an animation that will be allowed is, by passing in a set of elements and a time interval, you can define an animation where the element changes to the next element after the specified amount of time has passed. 
+My library will aid developers in applying geometric properties and animations to the elements of their webpage. The functionality that will be included will be the ability to rotate shapes, align dom elements according to predefined geometric patterns, defining element animations, having user-moveable elements, spinnable elements, and resizeable elements.  
+
+Link to landing page: https://stark-bastion-08658.herokuapp.com/examples.html
+Link to documentation: https://stark-bastion-08658.herokuapp.com/api.html
+
+
+Getting started:
+
+Here are the steps to get started with shapy.js:
+
+1. Download the code from the github repository.
+2. In the head of your html page, add the following two lines in order:  
+    <script defer src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="shapy.js" ></script>
+
+    The first is to include jquery and the second is to include shapy.js
+
+3.  In your javascript file, add this line at the top:
+    const shapy = new Shapy()
+
+    Now you can call all of shapy's methods using the new shapy object.
+
+    Ex:
+
+    const shapy = new Shapy()
+    const element = document.querySelector(".elem")
+    const elementRotate = shapy.rotateable(element)
+
+4. Now just include your javascript file in your html file after the line including shapy.js, and you're all set!
+
